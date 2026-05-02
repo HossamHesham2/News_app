@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/features/articales/articale_item.dart';
 import 'package:news_app/models/category.dart';
 import 'package:news_app/providers/articales_provider.dart';
@@ -87,7 +86,7 @@ class _SourcesViewState extends State<SourcesView> {
               if (articalsProvider.articales.isEmpty){
                 return Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Center(child: Text("No Articles Found")),
+                  child: Center(child: Text("No Articles Found",style: Theme.of(context).textTheme.displaySmall,)),
                 );
               }
               return Expanded(
