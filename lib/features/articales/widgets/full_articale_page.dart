@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/core/colors_manager/colors_manager.dart';
+import 'package:news_app/data/model/articale_responce/Article.dart';
+import 'package:news_app/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
-import '../../../core/colors_manager/colors_manager.dart';
-import '../../../data/model/articale_responce/Article.dart';
-import '../../../providers/theme_provider.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 class FullArticlePage extends StatefulWidget {
   final Article article;
