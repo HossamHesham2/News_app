@@ -6,18 +6,27 @@ import 'package:provider/provider.dart';
 import '../../../core/colors_manager/colors_manager.dart';
 import '../../../data/model/articale_responce/Article.dart';
 import '../../../providers/theme_provider.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class FullArticlePage extends StatefulWidget {
   final Article article;
 
-  const FullArticlePage({Key? key, required this.article}) : super(key: key);
+  const FullArticlePage({super.key, required this.article});
 
   @override
   State<FullArticlePage> createState() => _FullArticlePageState();
 }
 
 class _FullArticlePageState extends State<FullArticlePage> {
+  Future<void> _openArticle(String url) async {
+    final Uri uri = Uri.parse(url);
 
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
@@ -90,6 +99,20 @@ class _FullArticlePageState extends State<FullArticlePage> {
                 fontSize: 20
               ),
             ),
+            SizedBox(height: 15.h),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (widget.article.url != null && widget.article.url!.isNotEmpty) {
+                    _openArticle(widget.article.url!);
+                  }
+                },
+                style: Theme.of(context).elevatedButtonTheme.style,
+                child: Text("View Full Article in Google"),
+              ),
+            ),
+            SizedBox(height: 15.h),
           ],
         ),
       ),
